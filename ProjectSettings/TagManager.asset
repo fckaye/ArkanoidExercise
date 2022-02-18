@@ -8,6 +8,7 @@ TagManager:
   - Brick
   - Wall
   - Lava
+  - Paddle
   layers:
   - Default
   - TransparentFX
