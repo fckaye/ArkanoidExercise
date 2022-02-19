@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 8454771823029559133}
   - component: {fileID: 8454771823029559134}
   - component: {fileID: 8454771823029559135}
+  - component: {fileID: 597129963}
   m_Layer: 0
-  m_Name: Cylinder
-  m_TagString: Untagged
+  m_Name: Paddle Mesh
+  m_TagString: Paddle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,6 +96,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!54 &597129963
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8454771823029559121}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 124
+  m_CollisionDetection: 0
 --- !u!1 &8454771825031120562
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +124,7 @@ GameObject:
   - component: {fileID: 1588006375605387603}
   m_Layer: 0
   m_Name: Paddle
-  m_TagString: Untagged
+  m_TagString: Paddle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,3 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf8aaa5a7e3a2374294b65d0de8d186e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftBound: {x: -3.75, y: 0}
+  rightBound: {x: 3.75, y: 0}
+  speed: 5

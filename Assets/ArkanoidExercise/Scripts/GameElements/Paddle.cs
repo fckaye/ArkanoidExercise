@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ArkanoidExercise.Scripts
+namespace ArkanoidExercise.Scripts.GameElements
 {
     public class Paddle : MonoBehaviour
     {
         #region SerializedFields
-        [SerializeField] private float speed;
+        [SerializeField] private float _speed;
+        [SerializeField] private Vector3 _ballStartPos;
         #endregion // SerializedFields
 
         #region Class Members
-        private Vector2 dragStart;
-        private Vector2 dragEnd;
+        private Vector2 _dragStart;
+        private Vector2 _dragEnd;
+
+        public Vector3 BallStartPos => _ballStartPos;
         #endregion // Class Members
 
         #region MonoBehaviour Callbacks
@@ -30,21 +33,21 @@ namespace ArkanoidExercise.Scripts
             {
                 if (touch.phase == TouchPhase.Began)
                 {
-                    dragStart = touch.position;
-                    dragEnd = touch.position;
+                    _dragStart = touch.position;
+                    _dragEnd = touch.position;
                 }
 
                 if (touch.phase == TouchPhase.Moved ||
                     touch.phase == TouchPhase.Stationary)
                 {
-                    dragEnd = touch.position;
+                    _dragEnd = touch.position;
                 }
 
                 if (touch.phase == TouchPhase.Canceled ||
                     touch.phase == TouchPhase.Ended)
                 {
-                    dragStart = Vector2.zero;
-                    dragEnd = Vector2.zero;
+                    _dragStart = Vector2.zero;
+                    _dragEnd = Vector2.zero;
                 }
             }
         }
@@ -53,12 +56,12 @@ namespace ArkanoidExercise.Scripts
         {
             float x = GetSwipeDirection();
             Vector3 direction = new Vector3(x, 0, 0);
-            this.transform.Translate(direction * speed * Time.deltaTime);
+            this.transform.Translate(direction * _speed * Time.deltaTime);
         }
 
         private float GetSwipeDirection()
         {
-            float direction = dragEnd.x - dragStart.x;
+            float direction = _dragEnd.x - _dragStart.x;
             return Mathf.Clamp(direction, -1.0f, 1.0f);
         }
         #endregion // Private
