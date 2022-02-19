@@ -1,3 +1,4 @@
+using ArkanoidExercise.Scripts.Controllers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ namespace ArkanoidExercise.Scripts
     {
         #region SerializedFields
         [SerializeField] Collider ballCollider;
+        [SerializeField] Rigidbody rigidBody;
+        [SerializeField] private Vector3 shootForce;
         #endregion // SerializedFields
 
         #region Unity Callbacks
@@ -28,7 +31,10 @@ namespace ArkanoidExercise.Scripts
         #region Public
         public void Shoot()
         {
-            Debug.Log("Shoot the ball!");
+            if (rigidBody is null) return;
+
+            transform.parent = BallsManager.Instance.transform;
+            rigidBody.AddForce(shootForce);
         }
         #endregion // Public
 

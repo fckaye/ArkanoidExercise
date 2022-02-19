@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballCollider: {fileID: 1762720725032328844}
+  rigidBody: {fileID: 8624318911032462589}
+  shootForce: {x: 0, y: 250, z: 0}
 --- !u!1 &8870117069174533187
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,9 +91,9 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 3
