@@ -17,5 +17,12 @@ namespace ArkanoidExercise.Scripts.Controllers
             
         }
         #endregion // MonoBehaviour
+
+        #region Public
+        public void PlayerWin()
+        {
+            Debug.Log("WIN!");
+        }
+        #endregion // Public
     }
 }
