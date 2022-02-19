@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitPoints: 1
+  _destroyEffect: {fileID: 1187738484522686669, guid: 3b71217f39b07c546970054fab5ac39c, type: 3}
 --- !u!65 &3878839730319980838
 BoxCollider:
   m_ObjectHideFlags: 0

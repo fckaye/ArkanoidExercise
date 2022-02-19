@@ -29,7 +29,9 @@ namespace ArkanoidExercise.Scripts.GameElements
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.rigidbody.CompareTag(Tags.Ball))
+            if (collision != null &&
+                collision.rigidbody != null &&
+                collision.rigidbody.CompareTag(Tags.Ball))
             {
                 CalculateBounceDirection(collision);
             }

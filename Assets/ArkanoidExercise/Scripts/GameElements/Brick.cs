@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ namespace ArkanoidExercise.Scripts.GameElements
     {
         #region SerializedFields
         [SerializeField] private int _hitPoints;
+        [SerializeField] private ParticleSystem _destroyEffect;
         #endregion // SerializedFields
 
         #region Class Members
@@ -23,6 +25,8 @@ namespace ArkanoidExercise.Scripts.GameElements
                 }
             }
         }
+
+        public static event Action<Brick> OnBrickDestruction;
         #endregion // Class Members
 
         #region Unity Callbacks
@@ -43,7 +47,20 @@ namespace ArkanoidExercise.Scripts.GameElements
 
         private void Die()
         {
-            Debug.Log("Brick died");
+            OnBrickDestruction?.Invoke(this);
+            InstantiateDestroyEffect();
+            Destroy(this.gameObject, 0.01f);
+        }
+
+        private void InstantiateDestroyEffect()
+        {
+            if (_destroyEffect is null) return;
+
+            Vector3 brickPos = this.transform.position;
+            Vector3 effectPos = new Vector3(brickPos.x, brickPos.y, brickPos.z - 0.2f);
+            GameObject effectObj = Instantiate(_destroyEffect.gameObject, effectPos, Quaternion.identity);
+
+            Destroy(effectObj, _destroyEffect.main.startLifetime.constant);
         }
         #endregion // Private
     }

@@ -7,6 +7,8 @@ namespace ArkanoidExercise.Scripts.Controllers
 {
     public class BricksManager : Singleton<BricksManager>
     {
+        #region MonoBehaviour
 
+        #endregion // MonoBehaviour
     }
 }

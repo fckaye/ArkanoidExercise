@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c15a5f09f04fe634e98fdebdc5431a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shootForce: {x: 0, y: 250, z: 0}
+  _shootForce: {x: 0, y: 500, z: 0}
   _bounceStrength: 200
 --- !u!54 &7857935949359215104
 Rigidbody:
