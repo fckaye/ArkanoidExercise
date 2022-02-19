@@ -26,11 +26,6 @@ namespace ArkanoidExercise.Scripts
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag(Tags.Paddle))
-            {
-                BounceOff();
-            }
-
             if (other.CompareTag(Tags.Lava))
             {
 
@@ -49,11 +44,6 @@ namespace ArkanoidExercise.Scripts
         #endregion // Public
 
         #region Private
-        private void BounceOff()
-        {
-
-        }
-
         private void DestroyBall()
         {
 
