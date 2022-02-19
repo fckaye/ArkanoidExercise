@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shootForce: {x: 0, y: 500, z: 0}
-  _bounceStrength: 200
+  _bounceStrength: 300
 --- !u!54 &7857935949359215104
 Rigidbody:
   m_ObjectHideFlags: 0

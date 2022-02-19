@@ -49,7 +49,7 @@ namespace ArkanoidExercise.Scripts.GameElements
         {
             OnBrickDestruction?.Invoke(this);
             InstantiateDestroyEffect();
-            Destroy(this.gameObject, 0.01f);
+            Destroy(this.gameObject, 0.05f);
         }
 
         private void InstantiateDestroyEffect()
