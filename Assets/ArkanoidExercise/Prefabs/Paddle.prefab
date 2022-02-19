@@ -122,7 +122,7 @@ BoxCollider:
   m_GameObject: {fileID: 8454771823029559121}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -136,6 +136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8454771825031120561}
   - component: {fileID: 1588006375605387603}
+  - component: {fileID: 4525009569406957269}
   m_Layer: 0
   m_Name: Paddle
   m_TagString: Paddle
@@ -172,3 +173,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _ballStartPos: {fileID: 6366819638134112946}
+--- !u!65 &4525009569406957269
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8454771825031120562}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.6, y: 0.6, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}

@@ -8,12 +8,22 @@ namespace ArkanoidExercise.Scripts
     public class Ball : MonoBehaviour
     {
         #region SerializedFields
-        [SerializeField] Collider ballCollider;
-        [SerializeField] Rigidbody rigidBody;
-        [SerializeField] private Vector3 shootForce;
+        [SerializeField] private Vector3 _shootForce;
+        [SerializeField] private float _bounceStrength;
         #endregion // SerializedFields
 
+        #region Class Members
+        private Rigidbody ballRigidbody;
+        public Vector3 ShootForce => _shootForce;
+        public float BounceStrength => _bounceStrength;
+        #endregion // ClassMembers
+
         #region Unity Callbacks
+        private void Awake()
+        {
+            this.ballRigidbody = this.gameObject.GetComponent<Rigidbody>();
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag(Tags.Paddle))
@@ -31,10 +41,10 @@ namespace ArkanoidExercise.Scripts
         #region Public
         public void Shoot()
         {
-            if (rigidBody is null) return;
+            if (ballRigidbody is null) return;
 
             transform.parent = BallsManager.Instance.transform;
-            rigidBody.AddForce(shootForce);
+            ballRigidbody.AddForce(_shootForce);
         }
         #endregion // Public
 

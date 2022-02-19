@@ -1,3 +1,4 @@
+using ArkanoidExercise.Scripts.Controllers;
 using ArkanoidExercise.Scripts.Utils;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,6 +25,14 @@ namespace ArkanoidExercise.Scripts.GameElements
         {
             CheckInput();
             MovePaddle();
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.rigidbody.CompareTag(Tags.Ball))
+            {
+                CalculateBounceDirection(collision);
+            }
         }
         #endregion // MonoBehaviour Callbacks.
 
@@ -64,6 +73,28 @@ namespace ArkanoidExercise.Scripts.GameElements
         {
             float direction = _dragEnd.x - _dragStart.x;
             return Mathf.Clamp(direction, -1.0f, 1.0f);
+        }
+
+        private void CalculateBounceDirection(Collision collision)
+        {
+            if (!GameController.Instance.GameStarted) return;
+            if (collision is null) return;
+
+            if (collision.gameObject.TryGetComponent(out Ball ball))
+            {
+                Rigidbody ballRB = collision.rigidbody;
+
+                Vector3 contactPoint = collision.contacts[0].point;
+
+                float distanceToCenter = contactPoint.x - this.transform.position.x;
+                float xDirection = Mathf.Clamp(distanceToCenter, -1.0f, 1.0f);
+
+                Vector3 newBallDirection = ball.ShootForce;
+                newBallDirection.x = xDirection * ball.BounceStrength;
+
+                ballRB.velocity = Vector3.zero;
+                ballRB.AddForce(newBallDirection);
+            }
         }
         #endregion // Private
     }
