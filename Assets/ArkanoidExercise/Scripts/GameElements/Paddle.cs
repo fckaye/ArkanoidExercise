@@ -1,21 +1,22 @@
+using ArkanoidExercise.Scripts.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace ArkanoidExercise.Scripts.GameElements
 {
-    public class Paddle : MonoBehaviour
+    public class Paddle : Singleton<Paddle>
     {
         #region SerializedFields
         [SerializeField] private float _speed;
-        [SerializeField] private Vector3 _ballStartPos;
+        [SerializeField] private Transform _ballStartPos;
         #endregion // SerializedFields
 
         #region Class Members
         private Vector2 _dragStart;
         private Vector2 _dragEnd;
 
-        public Vector3 BallStartPos => _ballStartPos;
+        public Transform BallStartPos => _ballStartPos;
         #endregion // Class Members
 
         #region MonoBehaviour Callbacks
