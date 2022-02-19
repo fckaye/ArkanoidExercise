@@ -10,10 +10,16 @@ namespace ArkanoidExercise.Scripts.Controllers
     {
         #region SerializeFields
         [SerializeField] private GameObject ballPrefab;
+        [SerializeField] private float tapDistanceThreshold;
         #endregion // SerializeFields
 
         #region Class Members
-        private List<Ball> _balls;
+        private bool _initialized;
+
+        private Vector2 _tapStartPos;
+        private Vector2 _tapEndPos;
+
+        private List<Ball> _balls = new List<Ball>();
         public List<Ball> Balls => _balls;
         #endregion // Class Members
 
@@ -21,6 +27,14 @@ namespace ArkanoidExercise.Scripts.Controllers
         private void Start()
         {
             Initialize();
+        }
+
+        private void Update()
+        {
+            if (_initialized && !GameController.Instance.GameStarted)
+            {
+                CheckInitialTapInput();
+            }
         }
         #endregion // MonoBehaviour
 
@@ -32,11 +46,47 @@ namespace ArkanoidExercise.Scripts.Controllers
         private void Initialize()
         {
             CreateBallOnPaddle();
+            _initialized = true;
         }
 
         private void CreateBallOnPaddle()
         {
             GameObject ballObj = Instantiate(ballPrefab, Paddle.Instance.BallStartPos);
+            if (ballObj.TryGetComponent(out Ball ball))
+            {
+                _balls.Add(ball);
+            }
+        }
+
+        private void CheckInitialTapInput()
+        {
+            foreach (Touch touch in Input.touches)
+            {
+                if (touch.phase == TouchPhase.Began)
+                {
+                    _tapStartPos = touch.position;
+                    _tapEndPos = touch.position;
+                }
+
+                if (touch.phase == TouchPhase.Ended)
+                {
+                    _tapEndPos = touch.position;
+
+                    if (Vector2.Distance(_tapEndPos, _tapStartPos) <= tapDistanceThreshold)
+                    {
+                        FireInitialTap();
+                    }
+                }
+            }
+        }
+
+        private void FireInitialTap()
+        {
+            GameController.Instance.GameStarted = true;
+            foreach (Ball ball in _balls)
+            {
+                ball.Shoot();
+            }
         }
         #endregion // Private
     }

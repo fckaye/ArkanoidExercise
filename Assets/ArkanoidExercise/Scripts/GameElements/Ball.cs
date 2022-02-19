@@ -26,7 +26,10 @@ namespace ArkanoidExercise.Scripts
         #endregion // Unity Callbacks
 
         #region Public
-
+        public void Shoot()
+        {
+            Debug.Log("Shoot the ball!");
+        }
         #endregion // Public
 
         #region Private

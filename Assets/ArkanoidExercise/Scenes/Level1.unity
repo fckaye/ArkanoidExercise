@@ -729,6 +729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballPrefab: {fileID: 1370560095525624306, guid: 02f791d5b15c6154f9059177c56c7137, type: 3}
+  tapDistanceThreshold: 0.1
 --- !u!4 &1890785327
 Transform:
   m_ObjectHideFlags: 0

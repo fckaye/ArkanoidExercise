@@ -7,6 +7,15 @@ namespace ArkanoidExercise.Scripts.Controllers
 {
     public class GameController : Singleton<GameController>
     {
+        #region Class members
+        public bool GameStarted { get; set; }
+        #endregion // Class members
 
+        #region MonoBehaviour
+        private void Update()
+        {
+            
+        }
+        #endregion // MonoBehaviour
     }
 }
