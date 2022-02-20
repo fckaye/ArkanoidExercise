@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ArkanoidExercise/Scenes/Level1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/ArkanoidExercise/Scenes/Level2.unity
+    guid: 9e85c5fae85c5d7478751a2ebdb0d381
+  - enabled: 1
+    path: Assets/ArkanoidExercise/Scenes/Level3.unity
+    guid: afdeccb86ee3a284a945e0e386a1ff6b
   m_configObjects: {}
