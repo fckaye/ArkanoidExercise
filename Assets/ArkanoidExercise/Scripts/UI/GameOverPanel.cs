@@ -56,7 +56,7 @@ namespace ArkanoidExercise.Scripts.UI
 
         private void RestartCurrentLevel()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
         }
 
         private void GoToMainMenu()

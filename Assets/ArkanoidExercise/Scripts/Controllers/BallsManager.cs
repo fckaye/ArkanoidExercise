@@ -37,6 +37,12 @@ namespace ArkanoidExercise.Scripts.Controllers
                 CheckInitialTapInput();
             }
         }
+
+        private void OnDestroy()
+        {
+            Ball.OnBallDestruction -= UpdateBallStatus;
+            base.OnDestroy();
+        }
         #endregion // MonoBehaviour
 
         #region Public

@@ -19,6 +19,12 @@ namespace ArkanoidExercise.Scripts.Controllers
             bricks = FindObjectsOfType<Brick>().ToList();
             Brick.OnBrickDestruction += UpdateBrickStatus;
         }
+
+        private void OnDestroy()
+        {
+            Brick.OnBrickDestruction -= UpdateBrickStatus;
+            base.OnDestroy();
+        }
         #endregion // MonoBehaviour
 
         #region Private
