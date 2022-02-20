@@ -5,9 +5,18 @@ using UnityEngine;
 
 namespace ArkanoidExercise.Scripts.GameElements
 {
+    [Serializable]
+    public class BrickColors
+    {
+        public Color color;
+        public int hitPoint;
+    }
+
     public class Brick : MonoBehaviour
     {
         #region SerializedFields
+        [SerializeField] private BrickColors[] _hitColors;
+        [SerializeField] private Color _defaultColor;
         [SerializeField] private int _hitPoints;
         [SerializeField] private ParticleSystem _destroyEffect;
         #endregion // SerializedFields
@@ -26,9 +35,17 @@ namespace ArkanoidExercise.Scripts.GameElements
                 }
             }
         }
+
+        private Material material; 
         #endregion // Class Members
 
         #region Unity Callbacks
+        private void Awake()
+        {
+            GetMaterial();
+            UpdateColor();
+        }
+
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.collider.CompareTag(Tags.Ball))
@@ -42,6 +59,7 @@ namespace ArkanoidExercise.Scripts.GameElements
         private void TakeDamage()
         {
             HitPoints--;
+            UpdateColor();
         }
 
         private void Die()
@@ -60,6 +78,36 @@ namespace ArkanoidExercise.Scripts.GameElements
             GameObject effectObj = Instantiate(_destroyEffect.gameObject, effectPos, Quaternion.identity);
 
             Destroy(effectObj, _destroyEffect.main.startLifetime.constant);
+        }
+
+        private void GetMaterial()
+        {
+            Renderer renderer = GetComponentInChildren<Renderer>();
+            if (renderer != null)
+            {
+                material = renderer.material;
+            }
+        }
+
+        private void UpdateColor()
+        {
+            if (material is null) return;
+
+            bool foundColorMatch = false;
+
+            foreach (BrickColors hitColor in _hitColors)
+            {
+                if (hitColor.hitPoint == _hitPoints)
+                {
+                    material.color = hitColor.color;
+                    foundColorMatch = true;
+                }
+            }
+
+            if (!foundColorMatch)
+            {
+                material.color = _defaultColor;
+            }
         }
         #endregion // Private
     }
