@@ -13,6 +13,7 @@ namespace ArkanoidExercise.Scripts.GameElements
         #endregion // SerializedFields
 
         #region Class Members
+        public static event Action<Brick> OnBrickDestruction;
         public int HitPoints
         {
             get { return _hitPoints; }
@@ -25,8 +26,6 @@ namespace ArkanoidExercise.Scripts.GameElements
                 }
             }
         }
-
-        public static event Action<Brick> OnBrickDestruction;
         #endregion // Class Members
 
         #region Unity Callbacks

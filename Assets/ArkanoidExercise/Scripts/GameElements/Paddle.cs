@@ -10,6 +10,7 @@ namespace ArkanoidExercise.Scripts.GameElements
     {
         #region SerializedFields
         [SerializeField] private float _speed;
+        [SerializeField] private Vector3 _paddleStartPos;
         [SerializeField] private Transform _ballStartPos;
         #endregion // SerializedFields
 
@@ -37,6 +38,13 @@ namespace ArkanoidExercise.Scripts.GameElements
             }
         }
         #endregion // MonoBehaviour Callbacks.
+
+        #region Public
+        public void ResetToStartPos()
+        {
+            this.transform.position = _paddleStartPos;
+        }
+        #endregion // Public
 
         #region Private
         private void CheckInput()

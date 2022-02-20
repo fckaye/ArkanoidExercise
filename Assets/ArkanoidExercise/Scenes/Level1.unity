@@ -663,7 +663,7 @@ GameObject:
   - component: {fileID: 613617443}
   m_Layer: 0
   m_Name: Lava
-  m_TagString: Untagged
+  m_TagString: Lava
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -690,7 +690,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 613617441}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -2510,6 +2510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb2f763a600bf640955c3c52cf25938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLifes: 3
 --- !u!4 &2019102704
 Transform:
   m_ObjectHideFlags: 0
@@ -2874,6 +2875,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1056400973}
     m_Modifications:
+    - target: {fileID: 1588006375605387603, guid: 23ed7e4ff19945a4cbd1b3ec09243330, type: 3}
+      propertyPath: _paddleStartPos.y
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 8454771825031120561, guid: 23ed7e4ff19945a4cbd1b3ec09243330, type: 3}
       propertyPath: m_RootOrder
       value: 3

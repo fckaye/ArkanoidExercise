@@ -1,4 +1,5 @@
 using ArkanoidExercise.Scripts.Controllers;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace ArkanoidExercise.Scripts
         #endregion // SerializedFields
 
         #region Class Members
+        public static event Action<Ball> OnBallDestruction;
         private Rigidbody ballRigidbody;
         public Vector3 ShootForce => _shootForce;
         public float BounceStrength => _bounceStrength;
@@ -28,7 +30,7 @@ namespace ArkanoidExercise.Scripts
         {
             if (other.CompareTag(Tags.Lava))
             {
-
+                Die();
             }
         }
         #endregion // Unity Callbacks
@@ -44,9 +46,10 @@ namespace ArkanoidExercise.Scripts
         #endregion // Public
 
         #region Private
-        private void DestroyBall()
+        private void Die()
         {
-
+            OnBallDestruction?.Invoke(this);
+            Destroy(this.gameObject);
         }
         #endregion // Private
     }

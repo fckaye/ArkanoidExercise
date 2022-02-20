@@ -159,6 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
+  _paddleStartPos: {x: 0, y: -2, z: 0}
   _ballStartPos: {fileID: 6366819638134112946}
 --- !u!65 &4525009569406957269
 BoxCollider:

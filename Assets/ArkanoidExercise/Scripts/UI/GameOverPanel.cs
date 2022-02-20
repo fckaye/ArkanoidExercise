@@ -61,7 +61,7 @@ namespace ArkanoidExercise.Scripts.UI
 
         private void GoToMainMenu()
         {
-
+            SceneManager.LoadScene("MainMenu");
         }
         #endregion // Private
     }

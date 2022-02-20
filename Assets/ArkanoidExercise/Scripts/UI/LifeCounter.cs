@@ -8,7 +8,7 @@ namespace ArkanoidExercise.Scripts.UI
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class LifeCounter : MonoBehaviour
     {
-        public static string LIFE_FORMAT = $"Lifes: {0}";
+        public static string LIFE_FORMAT = "Lifes: {0}";
 
         #region Class Members
         private TextMeshProUGUI _label;

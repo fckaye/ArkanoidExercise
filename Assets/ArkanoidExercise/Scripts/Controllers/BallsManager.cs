@@ -19,7 +19,7 @@ namespace ArkanoidExercise.Scripts.Controllers
         private Vector2 _tapStartPos;
         private Vector2 _tapEndPos;
 
-        private List<Ball> _balls = new List<Ball>();
+        private List<Ball> _balls;
         public List<Ball> Balls => _balls;
         #endregion // Class Members
 
@@ -27,6 +27,7 @@ namespace ArkanoidExercise.Scripts.Controllers
         private void Start()
         {
             Initialize();
+            Ball.OnBallDestruction += UpdateBallStatus;
         }
 
         private void Update()
@@ -39,12 +40,16 @@ namespace ArkanoidExercise.Scripts.Controllers
         #endregion // MonoBehaviour
 
         #region Public
-
+        public void ReInitialize()
+        {
+            Initialize();
+        }
         #endregion // Public
 
         #region Private
         private void Initialize()
         {
+            _balls = new List<Ball>();
             CreateBallOnPaddle();
             _initialized = true;
         }
@@ -86,6 +91,19 @@ namespace ArkanoidExercise.Scripts.Controllers
             foreach (Ball ball in _balls)
             {
                 ball.Shoot();
+            }
+        }
+
+        private void UpdateBallStatus(Ball ball)
+        {
+            if (_balls.Contains(ball))
+            {
+                _balls.Remove(ball);
+            }
+
+            if (_balls.Count <= 0)
+            {
+                GameController.Instance.LoseLife();
             }
         }
         #endregion // Private
