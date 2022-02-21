@@ -29,11 +29,13 @@ namespace ArkanoidExercise.Scripts.Controllers
         #region Public
         public void PlayerWin()
         {
+            GameStarted = false;
             GameUIController.Instance.ShowGameOverUI(true);
         }
 
         public void LoseLife()
         {
+            if (!GameStarted) return;
             _lifes--;
             GameUIController.Instance.UpdateLifeCounter(_lifes);
 
